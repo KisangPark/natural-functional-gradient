@@ -1,25 +1,32 @@
-import numpy as np
-import sys
-from PyQt5.QtWidgets import QApplication
-app = QApplication(sys.argv)
+# import numpy as np
+# import sys
+# from PyQt5.QtWidgets import QApplication
+# app = QApplication(sys.argv)
 
-"""
-%run ../../package/init_kinematics.py
-"""
-from transforms import ( # type: ignore
-    p2t,
-    pr2t,
-    rpy2r,
-    np_uv,
-    view_in_world,
-)
+# """
+# %run ../../package/init_kinematics.py
+# """
+# from transforms import ( # type: ignore
+#     p2t,
+#     pr2t,
+#     rpy2r,
+#     np_uv,
+#     view_in_world,
+# )
 
-"""
-%run ../../package/init_qt.py
-"""
-from qt_widgets import ( # type: ignore
-    MultiSliderQtWidget,
-)
+# """
+# %run ../../package/init_qt.py
+# """
+# from qt_widgets import ( # type: ignore
+#     MultiSliderQtWidget,
+# )
+
+from ri_motion_v5_package.init_scripts.init_ipython_setup import *
+from ri_motion_v5_package.init_scripts.init_qt import *
+from ri_motion_v5_package.mujoco_sim import *
+from ri_motion_v5_package.kinematics import *
+from ri_motion_v5_package.utility import *
+from ri_motion_v5_package.qt import *
 
 def get_panda_joint_names():
     """
@@ -274,6 +281,7 @@ def animate_cabinet_env_traj(
         q_inspire0,
         p_cylinder_offset0,
         ubuntu_process_events_flag = False,
+        app = None,
     ):
     """
     Animate the cabinet environment trajectory.
