@@ -1,0 +1,168 @@
+<mujoco model="panda_inspire">
+  <compiler angle="radian" meshdir="mesh" />
+  <option timestep="0.002" integrator="implicitfast" />
+
+  
+  <asset>
+    <!-- panda assets-->
+    <mesh name="panda_link0" file="mesh_panda/visual/link0.stl" />
+    <mesh name="panda_link1" file="mesh_panda/visual/link1.stl" />
+    <mesh name="panda_link2" file="mesh_panda/visual/link2.stl" />
+    <mesh name="panda_link3" file="mesh_panda/visual/link3.stl" />
+    <mesh name="panda_link4" file="mesh_panda/visual/link4.stl" />
+    <mesh name="panda_link5" file="mesh_panda/visual/link5.stl" />
+    <mesh name="panda_link6" file="mesh_panda/visual/link6.stl" />
+    <mesh name="panda_link7" file="mesh_panda/visual/link7.stl" />
+    <mesh name="panda_link0_vis" file="mesh_panda/visual/link0.stl" />
+    <mesh name="panda_link1_vis" file="mesh_panda/visual/link1.stl" />
+    <mesh name="panda_link2_vis" file="mesh_panda/visual/link2.stl" />
+    <mesh name="panda_link3_vis" file="mesh_panda/visual/link3.stl" />
+    <mesh name="panda_link4_vis" file="mesh_panda/visual/link4.stl" />
+    <mesh name="panda_link5_vis" file="mesh_panda/visual/link5.stl" />
+    <mesh name="panda_link6_vis" file="mesh_panda/visual/link6.stl" />
+    <mesh name="panda_link7_vis" file="mesh_panda/visual/link7.stl" />
+    <mesh name="panda_pedestal" file="mesh_panda/rethink_mount/pedestal.stl" />
+    <mesh name="panda_hand" file="mesh_panda/visual/hand.stl" />
+    <mesh name="panda_hand_vis" file="mesh_panda/visual/hand_vis.stl" />
+    <mesh name="panda_finger" file="mesh_panda/visual/finger.stl" />
+    <mesh name="panda_finger_vis" file="mesh_panda/visual/finger_vis.stl" />
+    <mesh name="panda_finger_vis2" file="mesh_panda/visual/finger_longer.stl" />
+
+    <!-- inspire -->
+    <mesh name="base_link" file="mesh_inspire/base_link.STL"/>
+    <mesh name="palm_force_sensor" file="mesh_inspire/palm_force_sensor.STL"/>
+    <mesh name="left_thumb_1" file="mesh_inspire/left_thumb_1.STL"/>
+    <mesh name="left_thumb_2" file="mesh_inspire/left_thumb_2.STL"/>
+    <mesh name="thumb_force_sensor_1" file="mesh_inspire/thumb_force_sensor_1.STL"/>
+    <mesh name="left_thumb_3" file="mesh_inspire/left_thumb_3.STL"/>
+    <mesh name="thumb_force_sensor_2" file="mesh_inspire/thumb_force_sensor_2.STL"/>
+    <mesh name="left_thumb_4" file="mesh_inspire/left_thumb_4.STL"/>
+    <mesh name="thumb_force_sensor_3" file="mesh_inspire/thumb_force_sensor_3.STL"/>
+    <mesh name="thumb_force_sensor_4" file="mesh_inspire/thumb_force_sensor_4.STL"/>
+    <mesh name="left_index_1" file="mesh_inspire/left_index_1.STL"/>
+    <mesh name="index_force_sensor_1" file="mesh_inspire/index_force_sensor_1.STL"/>
+    <mesh name="left_index_2" file="mesh_inspire/left_index_2.STL"/>
+    <mesh name="index_force_sensor_2" file="mesh_inspire/index_force_sensor_2.STL"/>
+    <mesh name="index_force_sensor_3" file="mesh_inspire/index_force_sensor_3.STL"/>
+    <mesh name="left_middle_1" file="mesh_inspire/left_middle_1.STL"/>
+    <mesh name="middle_force_sensor_1" file="mesh_inspire/middle_force_sensor_1.STL"/>
+    <mesh name="left_middle_2" file="mesh_inspire/left_middle_2.STL"/>
+    <mesh name="middle_force_sensor_2" file="mesh_inspire/middle_force_sensor_2.STL"/>
+    <mesh name="middle_force_sensor_3" file="mesh_inspire/middle_force_sensor_3.STL"/>
+    <mesh name="left_ring_1" file="mesh_inspire/left_ring_1.STL"/>
+    <mesh name="ring_force_sensor_1" file="mesh_inspire/ring_force_sensor_1.STL"/>
+    <mesh name="left_ring_2" file="mesh_inspire/left_ring_2.STL"/>
+    <mesh name="ring_force_sensor_2" file="mesh_inspire/ring_force_sensor_2.STL"/>
+    <mesh name="ring_force_sensor_3" file="mesh_inspire/ring_force_sensor_3.STL"/>
+    <mesh name="left_little_1" file="mesh_inspire/left_little_1.STL"/>
+    <mesh name="little_force_sensor_1" file="mesh_inspire/little_force_sensor_1.STL"/>
+    <mesh name="left_little_2" file="mesh_inspire/left_little_2.STL"/>
+    <mesh name="little_force_sensor_2" file="mesh_inspire/little_force_sensor_2.STL"/>
+    <mesh name="little_force_sensor_3" file="mesh_inspire/little_force_sensor_3.STL"/>
+  </asset>
+
+  <!-- panda body  -->
+  <worldbody>
+    <body name="panda_base" pos="0.0 0 0">
+      <!-- robot view -->
+      <camera mode="fixed" name="panda_robotview" pos="1.0 0 0.4" quat="0.653 0.271 0.271 0.653"/>
+      <inertial diaginertia="0 0 0" mass="0" pos="0 0 0"/>
+      <!-- mount attached here -->
+      <body name="panda_link_0" pos="0 0 0">
+        <inertial pos="0 0 0.05" mass="4" diaginertia="0.4 0.4 0.4" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="panda_link0_vis" name="panda_link_0_visual" rgba="1 1 1 1" />
+        <geom type="mesh" group="3" mesh="panda_link0" name="panda_link_0_collision"/>
+        <body name="panda_link_1" pos="0 0 0.333">
+          <inertial pos="0 0 -0.07" mass="3" diaginertia="0.3 0.3 0.3" />
+          <joint name="panda_joint1" pos="0 0 0" axis="0 0 1" limited="true" range="-2.8973 2.8973" damping="0.1"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="panda_link1_vis" name="panda_link_1_visual" rgba="1 1 1 1" />
+          <geom type="mesh" group="3" mesh="panda_link1" name="panda_link_1_collision"/>
+          <body name="panda_link_2" pos="0 0 0" quat="0.707107 -0.707107 0 0">
+            <inertial pos="0 -0.1 0" mass="3" diaginertia="0.3 0.3 0.3" />
+            <joint name="panda_joint2" pos="0 0 0" axis="0 0 1" limited="true" range="-1.7628 1.7628" damping="0.1"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="panda_link2_vis" name="panda_link_2_visual" rgba="1 1 1 1" />
+            <geom type="mesh" group="3" mesh="panda_link2" name="panda_link_2_collision"/>
+            <body name="panda_link_3" pos="0 -0.316 0" quat="0.707107 0.707107 0 0">
+              <inertial pos="0.04 0 -0.05" mass="2" diaginertia="0.2 0.2 0.2" />
+              <joint name="panda_joint3" pos="0 0 0" axis="0 0 1" limited="true" range="-2.8973 2.8973" damping="0.1"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="panda_link3_vis" name="panda_link_3_visual" rgba="1 1 1 1" />
+              <geom type="mesh" group="3" mesh="panda_link3" name="panda_link_3_collision"/>
+              <body name="panda_link_4" pos="0.0825 0 0" quat="0.707107 0.707107 0 0">
+                <inertial pos="-0.04 0.05 0" mass="2" diaginertia="0.2 0.2 0.2" />
+                <joint name="panda_joint4" pos="0 0 0" axis="0 0 1" limited="true" range="-3.0718 -0.0698" damping="0.1"/>
+                <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="panda_link4_vis" name="panda_link_4_visual" rgba="1 1 1 1" />
+                <geom type="mesh" group="3" mesh="panda_link4" name="panda_link_4_collision"/>
+                <body name="panda_link_5" pos="-0.0825 0.384 0" quat="0.707107 -0.707107 0 0">
+                  <inertial pos="0 0 -0.15" mass="2" diaginertia="0.2 0.2 0.2" />
+                  <joint name="panda_joint5" pos="0 0 0" axis="0 0 1" limited="true" range="-2.8973 2.8973" damping="0.1"/>
+                  <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="panda_link5_vis" name="panda_link_5_visual" rgba="1 1 1 1" />
+                  <geom type="mesh" group="3" mesh="panda_link5" name="panda_link_5_collision"/>
+                  <body name="panda_link_6" pos="0 0 0" quat="0.707107 0.707107 0 0">
+                    <inertial pos="0.06 0 0" mass="1.5" diaginertia="0.1 0.1 0.1" />
+                    <joint name="panda_joint6" pos="0 0 0" axis="0 0 1" limited="true" range="-0.0175 3.7525" damping="0.01"/>
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="panda_link6_vis" name="panda_link_6_visual" rgba="1 1 1 1" />
+                    <geom type="mesh" group="3" mesh="panda_link6" name="panda_link_6_collision"/>
+                    <body name="panda_link_7" pos="0.088 0 0" quat="0.707107 0.707107 0 0">
+                      <inertial pos="0 0 0.08" mass="0.5" diaginertia="0.05 0.05 0.05" />
+                      <joint name="panda_joint7" pos="0 0 0" axis="0 0 1" limited="true" range="-2.8973 2.8973" damping="0.01"/>
+                      <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="panda_link7_vis" name="panda_link_7_visual" rgba="1. 1. 1. 1." />
+                      <geom type="mesh" group="3" mesh="panda_link7" name="panda_link_7_collision"/>
+                      <!-- rotate 135deg to align physically to the tool-->
+                      <!-- <body name="right_hand" pos="0 0 0.1065" quat="0.924 0 0 -0.383"> -->
+                      <!-- rotate -135deg to align physically to the tool-->
+                      <body name="left_hand" pos="0 0 0.1065" quat="-0.383 0 0 0.924">
+                      <!-- <body name="right_hand" pos="0 0 0.1065" quat="0 0 0 1"> -->
+                        <inertial pos="0 0 0" mass="0.5" diaginertia="0.05 0.05 0.05" />
+                        <!-- to add gripper -->
+                        <!-- <include file="./panda_gripper.xml"/> -->
+                        <!-- add tesollo hand  -->
+                        <!-- <include file="./tesollo_include.xml"/> -->
+                        <!-- add inspire hand  -->
+                        <include file="./inspire_include.xml"/>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <!-- Equality constraints -->
+  <equality>
+    <!-- <joint joint1="right_thumb_2_joint" joint2="right_thumb_3_joint" polycoef="0 0.8024 0 0 0" active="true"/> -->
+    <!-- 
+      For now, our kinematic solver assumes that joint1 is passive and joint2 is active. 
+      To ensure this, we directly find the relation between 'right_thumb_2_joint' and 'right_thumb_4_joint'. 
+      Note that 0.76123688=0.9487*0.8024 
+    -->
+    <joint joint1="left_thumb_3_joint" joint2="left_thumb_2_joint" polycoef="0 0.8024 0 0 0" active="true"/>
+    <!-- <joint joint1="left_thumb_4_joint" joint2="left_thumb_3_joint" polycoef="0 0.9487 0 0 0" active="true"/> -->
+    <joint joint1="left_thumb_4_joint" joint2="left_thumb_2_joint" polycoef="0 0.7612 0 0 0" active="true"/>
+    <joint joint1="left_index_2_joint" joint2="left_index_1_joint" polycoef="0 1.0843 0 0 0" active="true"/>
+    <joint joint1="left_middle_2_joint" joint2="left_middle_1_joint" polycoef="0 1.0843 0 0 0" active="true"/>
+    <joint joint1="left_ring_2_joint" joint2="left_ring_1_joint" polycoef="0 1.0843 0 0 0" active="true"/>
+    <joint joint1="left_little_2_joint" joint2="left_little_1_joint" polycoef="0 1.0843 0 0 0" active="true"/>
+  </equality>
+
+  <!-- panda arm actuator-->
+  <actuator>
+    <!-- Physical limits of the actuator. -->
+    <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="panda_joint1" name="panda_torq_j1"/>
+    <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="panda_joint2" name="panda_torq_j2"/>
+    <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="panda_joint3" name="panda_torq_j3"/>
+    <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="panda_joint4" name="panda_torq_j4"/>
+    <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="panda_joint5" name="panda_torq_j5"/>
+    <motor ctrllimited="true" ctrlrange="-12.0 12.0" joint="panda_joint6" name="panda_torq_j6"/>
+    <motor ctrllimited="true" ctrlrange="-12.0 12.0" joint="panda_joint7" name="panda_torq_j7"/>
+  </actuator>
+
+
+  <contact>
+    <exclude body1="inspire_lh_palm" body2="left_thumb_2" />
+  </contact>
+
+</mujoco>

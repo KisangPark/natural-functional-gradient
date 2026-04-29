@@ -1,0 +1,21 @@
+<mujocoinclude>
+
+    <!-- Asset -->
+    <asset>
+        <texture type="2d" name="light_wood" file="light_wood_v3.png" />
+        <material name="wood_table_mat" texture="light_wood" specular="0.5" shininess="0.5" rgba="0.5 0.5 0.5 1" />
+    </asset>
+
+    <worldbody>
+        <body name="body_table" pos="0 0 0" euler="0 0 0">
+            <!-- Table -->
+            <geom name="front_object_table" size="0.75 1.0 0.5" pos="0 0 0.5" type="box" material="wood_table_mat" />
+            <inertial pos="0 0 0" mass="1" diaginertia="0 0 0" />
+            <!-- Camera -->
+            <body name="camera" pos="0.5 0 1.75">
+                <camera name="external" pos="0 0 0" xyaxes="1 0 0 0 1 0" fovy="90" />
+            </body>
+        </body>
+    </worldbody>
+
+</mujocoinclude>

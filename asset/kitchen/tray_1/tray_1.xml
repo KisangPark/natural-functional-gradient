@@ -1,0 +1,16 @@
+<mujoco>
+    <asset>
+        <texture name="wood_tex" type="2d" builtin="flat" rgb1="0.55 0.27 0.07" rgb2="0.55 0.27 0.07" width="64" height="64"/>
+        <material name="wood_mat" texture="wood_tex" specular="0.2" shininess="0.1" rgba="0.55 0.27 0.07 1.0"/>
+        <material name="wood_mat_black" texture="wood_tex" specular="0.2" shininess="0.1" rgba="0 0 0 1.0"/>
+    </asset>
+    <worldbody>
+        <body name="body_tray_1">
+            <geom type="box" size="0.13 0.28 0.003" pos="0 0 0.003" material="wood_mat"/>
+            <geom type="box" size="0.004 0.28 0.005" pos="0.126 0 0.011" material="wood_mat_black"/>
+            <geom type="box" size="0.004 0.28 0.005" pos="-0.126 0 0.011" material="wood_mat_black"/>
+            <geom type="box" size="0.13 0.004 0.005" pos="0 0.276 0.011" material="wood_mat_black"/>
+            <geom type="box" size="0.13 0.004 0.005" pos="0 -0.276 0.011" material="wood_mat_black"/>
+        </body>
+    </worldbody>
+</mujoco>

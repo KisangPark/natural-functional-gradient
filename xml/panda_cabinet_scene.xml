@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<mujoco model="scene">
+    <include file="../../../asset/floor/floor_white_gray.xml"/>
+    <include file="../asset/panda_inspire/panda_inspire_site_added.xml"/>
+    <include file="../asset/cabinet/cabinet_half_closed.xml"/>
+    <include file="../asset/object/cylinder.xml"/>
+    <option timestep="0.002" integrator="implicitfast"/>
+</mujoco>

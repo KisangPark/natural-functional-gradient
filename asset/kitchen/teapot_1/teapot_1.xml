@@ -1,0 +1,18 @@
+<mujoco model="teapot_1">
+  <compiler angle="radian"/>
+
+  <asset>
+    <mesh name="teapot_mesh" file="meshes/teapot_1.obj" scale="1 1 1"/>
+    <texture type="2d" name="teapot_tex" file="meshes/old_teapot.png" />
+    <material name="teapot_mat" texture="teapot_tex" specular="0.5" shininess="0.5" rgba="0.5 0.5 0.5 1" />
+  </asset>
+
+  <worldbody>
+    <body name="body_teapot_1" pos="0 0 0">
+      <!-- Cabinet body  -->
+      <geom type="mesh" mesh="teapot_mesh" pos="0 0 0" quat="1 0 0 0" material="teapot_mat"/>
+    </body>
+  </worldbody>
+
+
+</mujoco>

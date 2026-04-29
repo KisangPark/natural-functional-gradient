@@ -1,0 +1,28 @@
+<mujoco model="bookshelf_deep">
+  <compiler angle="radian"/>
+
+  <asset>
+    <texture type="2d" name="light_wood_deep" file="light_wood_v3.png" />
+    <material name="wood_mat_deep" texture="light_wood_deep" specular="0.5" shininess="0.5" rgba="0.5 0.5 0.5 1" />
+  </asset>
+
+  <worldbody>
+    <body name="body_bookshelf_deep" pos="0 0 0">
+
+      <!-- back panel (depth doubled) -->
+      <geom type="box" size="0.01 0.5 0.46" pos="-0.30 0.0 0.45" material="wood_mat_deep" />
+
+      <!-- shelves (depth doubled in x) -->
+      <geom type="box" size="0.30 0.5 0.01" pos="0.0 0.0 0.0" material="wood_mat_deep" />
+      <geom type="box" size="0.30 0.5 0.01" pos="0.0 0.0 0.3" material="wood_mat_deep" />
+      <geom type="box" size="0.30 0.5 0.01" pos="0.0 0.0 0.6" material="wood_mat_deep" />
+      <geom type="box" size="0.30 0.5 0.01" pos="0.0 0.0 0.9" material="wood_mat_deep" />
+
+      <!-- thin pillars (unchanged style) -->
+      <geom type="box" size="0.01 0.01 0.45" pos="0.26 0.48 0.45" material="wood_mat_deep" />
+      <geom type="box" size="0.01 0.01 0.45" pos="0.26 -0.48 0.45" material="wood_mat_deep" />
+      <geom type="box" size="0.01 0.01 0.45" pos="0.26 0.0 0.45" material="wood_mat_deep" />
+
+    </body>
+  </worldbody>
+</mujoco>

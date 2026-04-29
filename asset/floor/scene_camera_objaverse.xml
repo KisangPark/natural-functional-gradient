@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<mujoco model="scene with cameras">
+    <option integrator="implicitfast" noslip_iterations="10"/>
+    <include file="./floor_isaac_style.xml"/>
+    <include file="../camera/cam_egocentric_view.xml"/>
+    <include file="../camera/cam_side_view.xml"/>
+    <include file="../camera/cam_top_view.xml"/>
+    <include file="/Users/sungjoon/Dropbox/Mac/Research/Implementation/2025/objaverse/potato/potato_13/model_new.xml"/>
+    <include file="/Users/sungjoon/Dropbox/Mac/Research/Implementation/2025/objaverse/orange/orange_1/model_new.xml"/>
+    <include file="/Users/sungjoon/Dropbox/Mac/Research/Implementation/2025/objaverse/water_bottle/water_bottle_19/model_new.xml"/>
+    <include file="/Users/sungjoon/Dropbox/Mac/Research/Implementation/2025/objaverse/potato/potato_1/model_new.xml"/>
+    <include file="/Users/sungjoon/Dropbox/Mac/Research/Implementation/2025/objaverse/tomato/tomato_6/model_new.xml"/>
+</mujoco>

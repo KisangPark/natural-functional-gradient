@@ -1,0 +1,905 @@
+<?xml version="1.0" ?>
+<robot name="fr3_inspire_left">
+  <link name="base">
+  </link>
+  <joint name="fr3_base_joint" type="fixed">
+    <parent link="base"/>
+    <child link="fr3_link0"/>
+    <origin xyz="0.1 0.5 1.01" rpy="0 0 -1.57"/> <!-- z offset +1.01-->
+  </joint>
+  <link name="fr3_link0">
+    <visual name="fr3_link0_visual">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/visual/link0.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link0_collision">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/collision/link0.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0172 0.0004 0.0745"/>
+      <mass value="2.3966"/>
+      <inertia ixx="0.009" ixy="0.0" ixz="0.002" iyy="0.0115" iyz="0.0" izz="0.0085"/>
+    </inertial>
+  </link>
+  <link name="fr3_link1">
+    <visual name="fr3_link1_visual">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/visual/link1.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link1_collision">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/collision/link1.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0000004128 -0.0181251324 -0.0386035970"/>
+      <mass value="2.9274653454"/>
+      <inertia ixx="0.023927316485107913" ixy="1.3317903455714081e-05" ixz="-0.00011404774918616684" iyy="0.0224821613275756" iyz="-0.0019950320628240115" izz="0.006350098258530016"/>
+    </inertial>
+  </link>
+  <joint name="fr3_joint1" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0.333"/>
+    <parent link="fr3_link0"/>
+    <child link="fr3_link1"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87.0" lower="-2.7437" upper="2.7437" velocity="2.62"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.7437" soft_upper_limit="2.7437"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <link name="fr3_link2">
+    <visual name="fr3_link2_visual">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/visual/link2.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link2_collision">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/collision/link2.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0031828864 -0.0743221644 0.0088146084"/>
+      <mass value="2.9355370338"/>
+      <inertia ixx="0.041938946257609425" ixy="0.00020257331521090626" ixz="0.004077784227179924" iyy="0.02514514885014724" iyz="-0.0042252158006570156" izz="0.06170214472888839"/>
+    </inertial>
+  </link>
+  <joint name="fr3_joint2" type="revolute">
+    <origin rpy="-1.570796326794897 0 0" xyz="0 0 0"/>
+    <parent link="fr3_link1"/>
+    <child link="fr3_link2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87.0" lower="-1.7837" upper="1.7837" velocity="2.62"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-1.7837" soft_upper_limit="1.7837"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <link name="fr3_link3">
+    <visual name="fr3_link3_visual">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/visual/link3.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link3_collision">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/collision/link3.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0407015686 -0.0048200565 -0.0289730823"/>
+      <mass value="2.2449013699"/>
+      <inertia ixx="0.02410142547240885" ixy="0.002404694559042109" ixz="-0.002856269270114313" iyy="0.01974053266708178" iyz="-0.002104212683891874" izz="0.019044494482244823"/>
+    </inertial>
+  </link>
+  <joint name="fr3_joint3" type="revolute">
+    <origin rpy="1.570796326794897 0 0" xyz="0 -0.316 0"/>
+    <parent link="fr3_link2"/>
+    <child link="fr3_link3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87.0" lower="-2.9007" upper="2.9007" velocity="2.62"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.9007" soft_upper_limit="2.9007"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <link name="fr3_link4">
+    <visual name="fr3_link4_visual">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/visual/link4.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link4_collision">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/collision/link4.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0459100965 0.0630492960 -0.0085187868"/>
+      <mass value="2.6155955791"/>
+      <inertia ixx="0.03452998321913202" ixy="0.01322552265982813" ixz="0.01015142998484113" iyy="0.028881621933049058" iyz="-0.0009762833870704552" izz="0.04125471171146641"/>
+    </inertial>
+  </link>
+  <joint name="fr3_joint4" type="revolute">
+    <origin rpy="1.570796326794897 0 0" xyz="0.0825 0 0"/>
+    <parent link="fr3_link3"/>
+    <child link="fr3_link4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87.0" lower="-3.0421" upper="-0.1518" velocity="2.62"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-3.0421" soft_upper_limit="-0.1518"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <link name="fr3_link5">
+    <visual name="fr3_link5_visual">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/visual/link5.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link5_collision">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/collision/link5.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0016039605 0.0292536262 -0.0972965990"/>
+      <mass value="2.3271207594"/>
+      <inertia ixx="0.051610278463662895" ixy="-0.005715173387783472" ixz="-0.0035673167625872135" iyy="0.04787729713371481" iyz="0.010673985108535986" izz="0.016423625579357254"/>
+    </inertial>
+  </link>
+  <joint name="fr3_joint5" type="revolute">
+    <origin rpy="-1.570796326794897 0 0" xyz="-0.0825 0.384 0"/>
+    <parent link="fr3_link4"/>
+    <child link="fr3_link5"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="12.0" lower="-2.8065" upper="2.8065" velocity="5.26"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8065" soft_upper_limit="2.8065"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <link name="fr3_link6">
+    <visual name="fr3_link6_visual">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/visual/link6.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link6_collision">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/collision/link6.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0597131221 -0.0410294666 -0.0101692726"/>
+      <mass value="1.8170376524"/>
+      <inertia ixx="0.005412333594383447" ixy="0.006193456360285834" ixz="0.0014219289306117652" iyy="0.014058329545509979" iyz="-0.0013140753741120031" izz="0.016080817924212554"/>
+    </inertial>
+  </link>
+  <joint name="fr3_joint6" type="revolute">
+    <origin rpy="1.570796326794897 0 0" xyz="0 0 0"/>
+    <parent link="fr3_link5"/>
+    <child link="fr3_link6"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="12.0" lower="0.5445" upper="4.5169" velocity="4.18"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="0.5445" soft_upper_limit="4.5169"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <link name="fr3_link7">
+    <visual name="fr3_link7_visual">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/visual/link7.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link7_collision">
+      <geometry>
+        <mesh filename="package://franka_description/meshes/robot_arms/fr3/collision/link7.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0045225817 0.0086261921 -0.0161633251"/>
+      <mass value="0.6271432862"/>
+      <inertia ixx="0.00021092389150104718" ixy="-2.433299114461931e-05" ixz="4.564480393778983e-05" iyy="0.00017718568002411474" iyz="8.744070223226438e-05" izz="5.993190599659971e-05"/>
+    </inertial>
+  </link>
+  <joint name="fr3_joint7" type="revolute">
+    <origin rpy="1.570796326794897 0 0" xyz="0.088 0 0"/>
+    <parent link="fr3_link6"/>
+    <child link="fr3_link7"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="12.0" lower="-3.0159" upper="3.0159" velocity="5.26"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-3.0159" soft_upper_limit="3.0159"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <ros2_control name="FrankaHardwareInterface" type="system">
+    <hardware>
+      <param name="version">0.1.0</param>
+      <param name="arm_id">fr3</param>
+      <param name="prefix">&quot;&quot;</param>
+      <plugin>franka_hardware/FrankaHardwareInterface</plugin>
+      <param name="robot_ip">&quot;&quot;</param>
+      <param name="arm_prefix">&quot;&quot;</param>
+    </hardware>
+    <joint name="fr3_joint1">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <param name="initial_value">0.0</param>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="fr3_joint2">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position">
+        <param name="initial_value">-0.7853981633974483</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <param name="initial_value">0.0</param>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="fr3_joint3">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <param name="initial_value">0.0</param>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="fr3_joint4">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <param name="initial_value">0.0</param>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="fr3_joint5">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <param name="initial_value">0.0</param>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="fr3_joint6">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position">
+        <param name="initial_value">1.5707963267948966</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <param name="initial_value">0.0</param>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="fr3_joint7">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position">
+        <param name="initial_value">0.7853981633974483</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <param name="initial_value">0.0</param>
+      <state_interface name="effort"/>
+    </joint>
+    <gpio name="vx">
+      <command_interface name="cartesian_velocity"/>
+      <param name="index">0</param>
+    </gpio>
+    <gpio name="vy">
+      <command_interface name="cartesian_velocity"/>
+      <param name="index">1</param>
+    </gpio>
+    <gpio name="vz">
+      <command_interface name="cartesian_velocity"/>
+      <param name="index">2</param>
+    </gpio>
+    <gpio name="wx">
+      <command_interface name="cartesian_velocity"/>
+      <param name="index">3</param>
+    </gpio>
+    <gpio name="wy">
+      <command_interface name="cartesian_velocity"/>
+      <param name="index">4</param>
+    </gpio>
+    <gpio name="wz">
+      <command_interface name="cartesian_velocity"/>
+      <param name="index">5</param>
+    </gpio>
+    <gpio name="0">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">0</param>
+    </gpio>
+    <gpio name="1">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">1</param>
+    </gpio>
+    <gpio name="2">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">2</param>
+    </gpio>
+    <gpio name="3">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">3</param>
+    </gpio>
+    <gpio name="4">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">4</param>
+    </gpio>
+    <gpio name="5">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">5</param>
+    </gpio>
+    <gpio name="6">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">6</param>
+    </gpio>
+    <gpio name="7">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">7</param>
+    </gpio>
+    <gpio name="8">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">8</param>
+    </gpio>
+    <gpio name="9">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">9</param>
+    </gpio>
+    <gpio name="10">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">10</param>
+    </gpio>
+    <gpio name="11">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">11</param>
+    </gpio>
+    <gpio name="12">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">12</param>
+    </gpio>
+    <gpio name="13">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">13</param>
+    </gpio>
+    <gpio name="14">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">14</param>
+    </gpio>
+    <gpio name="15">
+      <command_interface name="cartesian_pose_command"/>
+      <param name="index">15</param>
+    </gpio>
+    <gpio name="joint_3_position">
+      <command_interface name="elbow_command"/>
+      <param name="index">0</param>
+    </gpio>
+    <gpio name="joint_4_sign">
+      <command_interface name="elbow_command"/>
+      <param name="index">1</param>
+    </gpio>
+  </ros2_control>
+
+  <joint name="panda_link7_to_left_hand_base_link" type="fixed">
+    <parent link="fr3_link7"/>
+    <child link="left_hand_base_link"/>
+    <origin xyz="0 0 0.1065" rpy="0 0 -0.7852342447"/>
+  </joint>
+
+  <link name="left_hand_base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.2"/>
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/base_link.STL"/>
+      </geometry>
+      <material name="left_hand_base_link">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/base_link.STL"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.00036819 0.012296 0.1196" rpy="1.5707997741 0 -3.1415853072"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/palm_force_sensor.STL"/>
+      </geometry>
+      <material name="palm_force_sensor_gray">
+        <color rgba="0.411765 0.411765 0.411765 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00036819 0.012296 0.1196" rpy="1.5707997741 0 -3.1415853072"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/palm_force_sensor.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="left_thumb_1">
+    <inertial>
+      <origin xyz="0.000892587 0.000344905 0.00159994" rpy="0 0 0"/>
+      <mass value="0.00746"/>
+      <inertia ixx="1.34891e-07" iyy="1.09691e-07" izz="6.68155e-08" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/left_thumb_1.STL"/>
+      </geometry>
+      <material name="left_thumb_1">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+      </visual>
+    <collision><geometry><mesh filename="package://inspire_description/inspire_meshes/left_thumb_1.STL"/></geometry></collision>
+  </link>
+
+  <joint name="left_thumb_1_joint" type="revolute">
+    <parent link="left_hand_base_link"/>
+    <child link="left_thumb_1"/>
+    <origin xyz="0.0269 0.02101 0.0689" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="1.1641" effort="10" velocity="10"/>
+    <dynamics damping="0.1"/>
+  </joint>
+
+  <link name="left_thumb_2">
+    <inertial>
+      <origin xyz="-0.0137251 0.0122134 -0.00884794" rpy="0 0 0"/>
+      <mass value="0.04364"/>
+      <inertia ixx="1.5573e-06" iyy="1.25265e-06" izz="1.02731e-06" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/left_thumb_2.STL"/>
+      </geometry>
+      <material name="left_thumb_2">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision><geometry><mesh filename="package://inspire_description/inspire_meshes/left_thumb_2.STL"/></geometry></collision>
+
+    <visual>
+      <origin xyz="-0.0087121 0.026305 -0.0089605" rpy="-2.0331157854 -1.5703106726 0.1425029436"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/thumb_force_sensor_1.STL"/>
+      </geometry>
+      <material name="thumb_force_sensor_1">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="left_thumb_2_joint" type="revolute">
+    <parent link="left_thumb_1"/>
+    <child link="left_thumb_2"/>
+    <origin xyz="0.0073431 0.011232 0.0052" rpy="1.5708000608 0 -2.8797997728"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="0" upper="0.5864" effort="10" velocity="10"/>
+    <dynamics damping="0.001"/>
+  </joint>
+
+  <link name="left_thumb_3">
+    <inertial>
+      <origin xyz="-0.0109571 0.00498989 -0.00765497" rpy="0 0 0"/>
+      <mass value="0.01601"/>
+      <inertia ixx="7.1124e-07" iyy="6.63577e-07" izz="4.42249e-07" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/left_thumb_3.STL"/>
+      </geometry>
+      <material name="left_thumb_3">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision><geometry><mesh filename="package://inspire_description/inspire_meshes/left_thumb_3.STL"/></geometry></collision>
+
+    <visual>
+      <origin xyz="-0.011771 0.01699 -0.0077514" rpy="-1.8397011278 -1.5698967357 0.0003713075"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/thumb_force_sensor_2.STL"/>
+      </geometry>
+      <material name="thumb_force_sensor_2">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="left_thumb_3_joint" type="revolute">
+    <parent link="left_thumb_2"/>
+    <child link="left_thumb_3"/>
+    <origin xyz="-0.031403 0.021069 -0.001299" rpy="0 0 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="0" upper="0.5" effort="10" velocity="10"/>
+    <dynamics damping="0.001"/>
+    <mimic joint="left_thumb_2_joint" multiplier="0.8024" offset="0"/>
+  </joint>
+
+  <link name="left_thumb_4">
+    <inertial>
+      <origin xyz="-0.0172132 0.0069311 -0.00734857" rpy="0 0 0"/>
+      <mass value="0.01172"/>
+      <inertia ixx="1.21424e-06" iyy="1.211e-06" izz="4.76312e-07" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/left_thumb_4.STL"/>
+      </geometry>
+      <material name="left_thumb_4">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision><geometry><mesh filename="package://inspire_description/inspire_meshes/left_thumb_4.STL"/></geometry></collision>
+
+    <visual>
+      <origin xyz="-0.014598 0.014721 -0.0073103" rpy="-2.9402483616 -1.5702042254 0.8086517627"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/thumb_force_sensor_3.STL"/>
+      </geometry>
+      <material name="thumb_force_sensor_3">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <visual>
+      <origin xyz="-0.028987 0.017301 -0.0073513" rpy="-1.1563667848 1.5707963268 1.1563667848"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/thumb_force_sensor_4.STL"/>
+      </geometry>
+      <material name="thumb_force_sensor_4">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="left_thumb_4_joint" type="revolute">
+    <parent link="left_thumb_3"/>
+    <child link="left_thumb_4"/>
+    <origin xyz="-0.021903 0.012816 -0.0003" rpy="0 0 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="0" upper="3.14" effort="10" velocity="10"/>
+    <dynamics damping="0.001"/>
+    <mimic joint="left_thumb_3_joint" multiplier="0.9487" offset="0"/>
+  </joint>
+
+  <link name="left_index_1">
+    <inertial>
+      <origin xyz="-0.00250992 0.0129748 0.00664964" rpy="0 0 0"/>
+      <mass value="0.02941"/>
+      <inertia ixx="1.30721e-06" iyy="1.21401e-06" izz="6.04123e-07" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/left_index_1.STL"/>
+      </geometry>
+      <material name="left_index_1">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision><geometry><mesh filename="package://inspire_description/inspire_meshes/left_index_1.STL"/></geometry></collision>
+
+    <visual>
+      <origin xyz="-0.012046 0.019649 0.006651" rpy="1.5707907175 -1.5350812369 -1.7828912913"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/index_force_sensor_1.STL"/>
+      </geometry>
+      <material name="index_force_sensor_1">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="left_index_1_joint" type="revolute">
+    <parent link="left_hand_base_link"/>
+    <child link="left_index_1"/>
+    <origin xyz="0.038679 0.00056467 0.1564" rpy="1.5358989852 0 -1.5707987474"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="1.4381" effort="10" velocity="10"/>
+    <dynamics damping="0.01"/>
+  </joint>
+
+  <link name="left_index_2">
+    <inertial>
+      <origin xyz="-0.000626474 0.0280667 0.00609282" rpy="0 0 0"/>
+      <mass value="0.01418"/>
+      <inertia ixx="3.02123e-06" iyy="2.99824e-06" izz="3.20601e-07" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+       <mesh filename="package://inspire_description/inspire_meshes/left_index_2.STL"/>
+      </geometry>
+      <material name="left_index_2">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision><geometry><mesh filename="package://inspire_description/inspire_meshes/left_index_2.STL"/></geometry></collision>
+
+    <visual>
+      <origin xyz="-0.0081655 0.037446 0.0060795" rpy="1.5707870691 -1.5336777942 -1.2219886234"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/index_force_sensor_2.STL"/>
+      </geometry>
+      <material name="index_force_sensor_2">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <visual>
+      <origin xyz="-0.0086237 0.052572 0.0060954" rpy="1.5708005899 -1.5252053041 -2.2691995302"/>
+      <geometry><mesh filename="package://inspire_description/inspire_meshes/index_force_sensor_3.STL"/></geometry>
+    </visual>
+  </link>
+
+  <joint name="left_index_2_joint" type="revolute">
+    <parent link="left_index_1"/>
+    <child link="left_index_2"/>
+    <origin xyz="-0.0034259 0.032596 0.00055" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="3.14" effort="10" velocity="10"/>
+    <dynamics damping="0.01"/>
+    <mimic joint="left_index_1_joint" multiplier="1.0843" offset="0"/>
+  </joint>
+
+  <link name="left_middle_1">
+    <inertial>
+      <origin xyz="-0.00250992 0.0129748 0.00664964" rpy="0 0 0"/>
+      <mass value="0.02941"/>
+      <inertia ixx="1.30721e-06" iyy="1.21401e-06" izz="6.04123e-07" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/left_middle_1.STL"/>
+      </geometry>
+      <material name="left_middle_1">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision><geometry><mesh filename="package://inspire_description/inspire_meshes/left_middle_1.STL"/></geometry></collision>
+
+    <visual>
+      <origin xyz="-0.012046 0.019649 0.006651" rpy="-2.072697471 -1.5700133139 1.8520875302"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/middle_force_sensor_1.STL"/>
+      </geometry>
+      <material name="middle_force_sensor_1">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="left_middle_1_joint" type="revolute">
+    <parent link="left_hand_base_link"/>
+    <child link="left_middle_1"/>
+    <origin xyz="0.0171 0.00056467 0.157" rpy="1.5708003268 0 -1.5708003268"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="1.4381" effort="10" velocity="10"/>
+    <dynamics damping="0.01"/>
+  </joint>
+
+  <link name="left_middle_2">
+    <inertial>
+      <origin xyz="-0.00107477 0.0294281 0.00610061" rpy="0 0 0"/>
+      <mass value="0.01761"/>
+      <inertia ixx="3.67118e-06" iyy="3.64911e-06" izz="3.507e-07" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/left_middle_2.STL"/>
+      </geometry>
+      <material name="left_middle_2">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision><geometry><mesh filename="package://inspire_description/inspire_meshes/left_middle_2.STL"/></geometry></collision>
+
+    <visual>
+      <origin xyz="-0.009086 0.040962 0.0061003" rpy="-1.2834009873 -1.5698518015 1.6522153439"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/middle_force_sensor_2.STL"/>
+      </geometry>
+      <material name="middle_force_sensor_2">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <visual>
+      <origin xyz="-0.0098294 0.056051 0.0061006" rpy="-2.5382638868 -1.5707963268 1.9699630576"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/middle_force_sensor_3.STL"/>
+      </geometry>
+      <material name="middle_force_sensor_3">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="left_middle_2_joint" type="revolute">
+    <parent link="left_middle_1"/>
+    <child link="left_middle_2"/>
+    <origin xyz="-0.0034259 0.032596 0.00055" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="3.14" effort="10" velocity="10"/>
+    <dynamics damping="0.01"/>
+    <mimic joint="left_middle_1_joint" multiplier="1.0843" offset="0"/>
+  </joint>
+
+  <link name="left_ring_1">
+    <inertial>
+      <origin xyz="-0.00250992 0.0129748 0.00664964" rpy="0 0 0"/>
+      <mass value="0.02941"/>
+      <inertia ixx="1.30721e-06" iyy="1.21401e-06" izz="6.04123e-07" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/left_ring_1.STL"/>
+      </geometry>
+      <material name="left_ring_1">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision><geometry><mesh filename="package://inspire_description/inspire_meshes/left_ring_1.STL"/></geometry></collision>
+
+    <visual>
+      <origin xyz="-0.012046 0.019649 0.006651" rpy="-1.5707851324 -1.5171859098 1.3586852762"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/ring_force_sensor_1.STL"/>
+      </geometry>
+      <material name="ring_force_sensor_1">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="left_ring_1_joint" type="revolute">
+    <parent link="left_hand_base_link"/>
+    <child link="left_ring_1"/>
+    <origin xyz="-0.0045302 0.00056467 0.15683" rpy="1.6232008142 0 -1.5708008307"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="1.4381" effort="10" velocity="10"/>
+    <dynamics damping="0.01"/>
+  </joint>
+
+  <link name="left_ring_2">
+    <inertial>
+      <origin xyz="-0.000577147 0.0279507 0.00609282" rpy="0 0 0"/>
+      <mass value="0.01481"/>
+      <inertia ixx="3.02641e-06" iyy="3.00354e-06" izz="3.20717e-07" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/left_ring_2.STL"/>
+      </geometry>
+      <material name="left_ring_2">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision><geometry><mesh filename="package://inspire_description/inspire_meshes/left_ring_2.STL"/></geometry></collision>
+
+    <visual>
+      <origin xyz="-0.0081655 0.037446 0.0060795" rpy="-1.5707974685 -1.5150961649 1.9195972431"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/ring_force_sensor_2.STL"/>
+      </geometry>
+      <material name="ring_force_sensor_2">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <visual>
+      <origin xyz="-0.0086237 0.052572 0.0060954" rpy="-1.5707807944 -1.5024920301 0.8723533992"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/ring_force_sensor_3.STL"/>
+      </geometry>
+      <material name="ring_force_sensor_3">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="left_ring_2_joint" type="revolute">
+    <parent link="left_ring_1"/>
+    <child link="left_ring_2"/>
+    <origin xyz="-0.0034259 0.032596 0.00055" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="3.14" effort="10" velocity="10"/>
+    <dynamics damping="0.01"/>
+    <mimic joint="left_ring_1_joint" multiplier="1.0843" offset="0"/>
+  </joint>
+
+  <link name="left_little_1">
+    <inertial>
+      <origin xyz="-0.00250992 0.0129748 0.00664964" rpy="0 0 0"/>
+      <mass value="0.02941"/>
+      <inertia ixx="1.30721e-06" iyy="1.21401e-06" izz="6.04123e-07" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/left_little_1.STL"/>
+      </geometry>
+      <material name="left_little_1">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision><geometry><mesh filename="package://inspire_description/inspire_meshes/left_little_1.STL"/></geometry></collision>
+
+    <visual>
+      <origin xyz="-0.012046 0.019649 0.006651" rpy="-1.5707860411 -1.4636894057 1.358686901"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/little_force_sensor_1.STL"/>
+      </geometry>
+      <material name="little_force_sensor_1">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="left_little_1_joint" type="revolute">
+    <parent link="left_hand_base_link"/>
+    <child link="left_little_1"/>
+    <origin xyz="-0.025916 0.00056467 0.15365" rpy="1.6755002385 0 -1.5708004178"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="1.4381" effort="10" velocity="10"/>
+    <dynamics damping="0.01"/>
+  </joint>
+
+  <link name="left_little_2">
+    <inertial>
+      <origin xyz="0.000187955 0.0230759 0.00610195" rpy="0 0 0"/>
+      <mass value="0.01157"/>
+      <inertia ixx="1.69359e-06" iyy="1.66542e-06" izz="2.4011e-07" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/left_little_2.STL"/>
+      </geometry>
+      <material name="left_little_2">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision><geometry><mesh filename="package://inspire_description/inspire_meshes/left_little_2.STL"/></geometry></collision>
+
+    <visual>
+      <origin xyz="-0.0064514 0.027683 0.0061172" rpy="-1.5708082465 -1.4597000156 1.9127075249"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/little_force_sensor_2.STL"/>
+      </geometry>
+      <material name="little_force_sensor_2">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <visual>
+      <origin xyz="-0.0063973 0.042707 0.0061154" rpy="-1.570810183 -1.4336005269 0.8655200385"/>
+      <geometry>
+        <mesh filename="package://inspire_description/inspire_meshes/little_force_sensor_3.STL"/>
+      </geometry>
+      <material name="little_force_sensor_3">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="left_little_2_joint" type="revolute">
+    <parent link="left_little_1"/>
+    <child link="left_little_2"/>
+    <origin xyz="-0.0034259 0.032596 0.00055" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="3.14" effort="10" velocity="10"/>
+    <dynamics damping="0.01"/>
+    <mimic joint="left_little_1_joint" multiplier="1.0843" offset="0"/>
+  </joint>
+
+</robot>

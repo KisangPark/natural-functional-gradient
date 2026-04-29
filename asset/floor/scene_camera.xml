@@ -1,0 +1,14 @@
+<mujoco model="scene with cameras">
+
+    <!-- Option -->
+    <option integrator="implicitfast" noslip_iterations="10" />
+
+    <!-- Floor and Sky -->
+    <include file="./floor_isaac_style.xml" />
+
+    <!-- Camera -->
+    <include file="../camera/cam_egocentric_view.xml" />
+    <include file="../camera/cam_side_view.xml" />
+    <include file="../camera/cam_top_view.xml" />
+
+</mujoco>
