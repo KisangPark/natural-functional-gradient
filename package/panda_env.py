@@ -130,7 +130,8 @@ def get_q_pandas_bookshelf():
     }
     return q_pandas
 
-def set_panda_bookshelf_env(env,panda_joints,inspire_joints,q_panda=None,q_inspire=None):
+def set_panda_bookshelf_env(env,panda_joints,inspire_joints,
+                            q_panda=None,q_inspire=None, initialize_viewer=False):
     """
     Set up the panda robot environment with a bookshelf and cylinder.
 
@@ -145,13 +146,15 @@ def set_panda_bookshelf_env(env,panda_joints,inspire_joints,q_panda=None,q_inspi
     env.reset()
 
     # Initialize viewer
-    env.init_viewer()
-    env.viewer.set_transparency(transparent=True)
-    env.viewer.set_cam_info(55,2.9,-21,[0.26,-0.18,0.52])
+    env.close_viewer()
+    if initialize_viewer:
+        env.init_viewer()
+        env.viewer.set_transparency(transparent=True)
+        env.viewer.set_cam_info(55,2.9,-21,[0.26,-0.18,0.52])
 
     # Move objects
-    env.set_T('body_bookshelf_base','body',pr2t((0.7,-0.6,0),rpy2r([0,0,np.pi])))
-    env.set_T('body_bookshelf_deep','body',pr2t((0.7,+0.6,0),rpy2r([0,0,np.pi])))
+    env.set_T('body_bookshelf_base_thick','body',pr2t((0.7,-0.6,0),rpy2r([0,0,np.pi])))
+    env.set_T('body_bookshelf_deep_thick','body',pr2t((0.7,+0.6,0),rpy2r([0,0,np.pi])))
     env.set_p('body_cylinder','base_body',(0,-0.5,1e-8))
 
     # Set panda joints
@@ -191,6 +194,7 @@ def set_panda_cabinet_env(
         x_offset            = None,
         y_offset            = None,
         initialize_viewer   = True,
+        cabinet_name         = 'body_cabinet_half_closed',
     ):
     """
     Set up the panda robot environment with a cabinet and cylinder.
@@ -215,7 +219,7 @@ def set_panda_cabinet_env(
         env.viewer.set_cam_info(-130.6,2.9,-33,[0.26,-0.17,0.17])
 
     # Move objects
-    env.set_T('body_cabinet_half_closed','body',pr2t((0.5,-0.5,0),rpy2r([0,0,0.5*np.pi])))
+    env.set_T(cabinet_name,'body',pr2t((0.5,-0.5,0),rpy2r([0,0,0.5*np.pi])))
     env.set_p('body_cylinder','base_body',(0,-0.5,1e-8))
 
     # Set panda joints
@@ -282,6 +286,7 @@ def animate_cabinet_env_traj(
         p_cylinder_offset0,
         ubuntu_process_events_flag = False,
         app = None,
+        cabinet_name = 'body_cabinet_half_closed',
     ):
     """
     Animate the cabinet environment trajectory.
@@ -304,7 +309,78 @@ def animate_cabinet_env_traj(
     set_panda_cabinet_env(
         env,panda_joints,inspire_joints,q_pandas['init'],q_inspire0,
         width,height,x_offset,y_offset,
+        cabinet_name = cabinet_name,
     )
+    sliders = MultiSliderQtWidget(
+        title         = "Tick",
+        window_width  = 0.8,
+        window_height = 0.02,
+        x_offset      = 0.1,
+        y_offset      = 0.0,
+        label_texts   = ['Tick'],
+        slider_mins   = [0],
+        slider_maxs   = [L-1],
+        slider_vals   = [0],
+        resolutions   = [1],
+    )
+
+    # Loop
+    while env.is_viewer_alive():
+        # Update
+        tick = int(sliders.get_values()[0])
+        q = traj[tick,:] # (dim)
+        env.forward(q=q,joint_names=panda_joints) # fk panda
+        T_palm = get_T_palm_panda_inspire(env) # palm 
+        T_cylinder = view_in_world(T=p2t(p_cylinder_offset0),T_wl=T_palm) # cylnder
+        env.set_T('body_cylinder','base_body',T_cylinder) # set cylinder pose
+        contact_info = env.get_contact_info() # contact info
+        min_contact_dist = contact_info['min_contact_dist'] # np.inf or negative
+        # Render
+        env.render()
+        env.viewer_text_overlay("Tick","[%d/%d]"%(tick,L),loc='bottom left')
+        env.viewer_text_overlay("Mode",mode_str,loc='top left')
+        env.plot_contact_info()
+        if ubuntu_process_events_flag:
+            app.processEvents()
+    
+    # Close 
+    env.close_viewer()
+    sliders.close()
+
+def animate_bookshelf_env_traj(
+        env,
+        mode_str,
+        traj,
+        panda_joints,
+        inspire_joints,
+        q_start,
+        q_inspire0,
+        p_cylinder_offset0,
+        ubuntu_process_events_flag = False,
+        app = None,
+        cabinet_name = 'body_cabinet_half_closed',
+    ):
+    """
+    Animate the cabinet environment trajectory.
+
+    Parameters:
+        env: The environment object.
+        mode_str (str): A string representing the mode of the animation.
+        traj (np.ndarray): A 2D array representing the trajectory of joint configurations.
+        panda_joints (list): List of joint names for the panda robot.
+        inspire_joints (list): List of joint names for the inspire hand.
+        q_pandas (dict): A dictionary containing joint configurations for different panda robots.
+        q_inspire0 (np.ndarray): Joint configuration for the inspire hand.
+        p_cylinder_offset0 (np.ndarray): Offset from the palm to the cylinder center in the palm frame.
+    """
+    # Trajectory length
+    L = traj.shape[0]
+
+    # Initialize env and viewer
+    width,height,x_offset,y_offset = 0.8,0.8,0.1,0.15
+    set_panda_bookshelf_env(
+    env,panda_joints,inspire_joints,
+    q_panda=q_start,q_inspire=q_inspire0, initialize_viewer=True)
     sliders = MultiSliderQtWidget(
         title         = "Tick",
         window_width  = 0.8,

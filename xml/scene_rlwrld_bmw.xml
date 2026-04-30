@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<mujoco model="scene">
+    <include file="../../../../asset/floor/floor_white_gray.xml"/>
+    <include file="../asset/doosan/doosan_tesollo_dg5g_with_base.xml"/>
+    <include file="../asset/franka_left_inspire/franka_left_inspire_with_base_site_added.xml"/>
+    <include file="../asset/object/obj_table.xml"/>
+    <include file="../asset/bmw_object/bmw_washer_nut_holder.xml"/>
+    <include file="../asset/bmw_object/bmw_housing.xml"/>
+    <include file="../asset/bmw_object/bmw_part.xml"/>
+    <include file="../asset/bmw_object/bmw_bosch_driver.xml"/>
+    <include file="../asset/bmw_object/bmw_jig.xml"/>
+    <option timestep="0.002" integrator="implicitfast"/>
+</mujoco>
